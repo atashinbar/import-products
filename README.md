@@ -236,39 +236,6 @@ The plugin uses WordPress cron to schedule imports every 30 minutes. The cron jo
 -   Updates the system status
 -   Logs all activities
 
-## Error Handling
-
--   Validates CSV file structure
--   Handles missing or malformed data gracefully
--   **Scientific Notation Conversion**: Automatically converts Excel-exported scientific notation (e.g., `2.00001E+12`) to full numbers
--   **Duplicate SKU Prevention**: Enhanced variation matching to prevent duplicate SKU errors
--   Logs detailed error messages for troubleshooting
--   Continues processing even if individual products fail
--   Provides error summaries in the admin interface
-
-### Common Issues and Solutions
-
-#### **Scientific Notation in CSV Files**
-
-**Problem**: When CSV files are edited in Excel, large numbers like barcodes may be converted to scientific notation (e.g., `2.00001E+12`), causing duplicate SKU errors.
-
-**Solution**: The plugin automatically detects and converts scientific notation back to full numbers:
-
--   Converts `2.00001E+12` → `2000010000000`
--   Logs conversion details for tracking
--   Prevents duplicate SKU errors caused by identical scientific notation values
-
-#### **Duplicate SKU Errors**
-
-**Problem**: "Invalid or duplicated SKU" errors when updating existing products.
-
-**Solution**: Enhanced variation matching logic:
-
--   First attempts to find variations by SKU
--   Falls back to matching by Size + Color attributes
--   Updates existing variations instead of creating duplicates
--   Properly syncs parent products after variation updates
-
 #### **Invalid CSV Structure**
 
 **Problem**: CSV files missing required columns or having incorrect format.
